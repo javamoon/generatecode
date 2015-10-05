@@ -1,0 +1,859 @@
+表名称：automatic_selection,表名称：automatic_selection,描述:智能选品,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+selection_pattern,tinyint(4),,3,0,Y, ,选品方式；1：按商品上架时间自动排期，2：周期性选品
+selection_condition_form,tinyint(4),,3,0,Y, ,【选品条件设置】；1：度假商品，2：酒店商品，3：门票商品，4：机票商品，5：客栈商品，6：游轮商品
+departure,varchar(512),512,,,Y, ,出发地
+destination,varchar(512),512,,,Y, ,到达地
+item_type,tinyint(4),,3,0,Y, ,"商品类型；1:国内自由行, 2:国内跟团游, 3:国际自由行, 4:国际跟团游, 5:周边游, 6:度假周边商品"
+price_min,"decimal(10,0)",,10,0,Y, ,最低价格
+price_max,"decimal(10,0)",,10,0,Y, ,最高价格
+effictive_date_start,datetime,,,,Y, ,有效开始日期
+effective_date_end,datetime,,,,Y, ,有效结束日期
+journey_amount_min,int(11),,10,0,Y, ,最小行程天数
+journey_amount_max,int(11),,10,0,Y, ,最大行程天数
+inventory_min,int(11),,10,0,Y, ,最小库存
+inventory_max,int(11),,10,0,Y, ,最大库存
+sales_volume_min,int(11),,10,0,Y, ,最少销量
+sales_volume_max,int(11),,10,0,Y, ,【选品条件设置】最大销量
+order_condition,tinyint(4),,3,0,Y, ,选品数据维度，排序；1：综合评分
+group_condition,tinyint(4),,3,0,Y, ,选品数据维度，分组；0：总共，1：每个出发地，2：每个目的地
+execution_condition,tinyint(4),,3,0,Y, ,"执行条件；1：人工触发执行，2：
+系统自动触发执行"
+content_repeat,tinyint(4),,3,0,Y, ,内容重复设置；1：不重复，2：重复
+floor_id,bigint(20) unsigned,,20,0,Y, ,楼层ID
+,,,,,,,
+,,,,,,,
+表名称：business,表名称：automatic_selection,描述:投放业务表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+name,varchar(60),60,,,N, ,投放业务名称
+first_type,bigint(20) unsigned,,20,0,Y, ,业务一级归属
+second_type,bigint(20) unsigned,,20,0,Y, ,业务二级归属
+third_type,bigint(20) unsigned,,20,0,Y, ,具体业务
+is_put_tms,tinyint(4),,3,0,Y, ,是否投放tms
+pic_url,varchar(80),80,,,Y, ,图片路径
+creator,varchar(40),40,,,N, ,创建者
+creator_id,bigint(20) unsigned,,20,0,N, ,创建者ID
+status,tinyint(4),,3,0,N, ,状态：状态： 0:编辑中，1:启用，2暂停，3:结束
+description,varchar(1024),1024,,,Y, ,业务描述
+exts,varchar(1024),1024,,,Y, ,扩展配置
+pc_tms_id,varchar(20),20,,,Y, ,绑定pc的tms的主键
+app_tms_id,varchar(20),20,,,Y, ,绑定无线的tms的主键
+,,,,,,,
+,,,,,,,
+表名称：business_type,表名称：automatic_selection,描述:业务归属表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+name,varchar(40),40,,,N, ,名称
+parent_id,bigint(20) unsigned,,20,0,Y, ,父ID
+level,varchar(4),4,,,Y, ,等级
+status,tinyint(4),,3,0,N, ,状态：0:无效，1:有效
+,,,,,,,
+,,,,,,,
+表名称：channel,表名称：automatic_selection,描述:频道信息,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键，频道编号
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+p_cid,bigint(20) unsigned,,20,0,Y, ,父频道编号
+name,varchar(255),255,,,N, ,频道名称
+description,varchar(1000),1000,,,Y, ,频道描述
+terminal_type,tinyint(4),,3,0,N, ,终端类型(1.PC，2.无线)
+biz_id,bigint(20) unsigned,,20,0,N, ,业务归属
+dept_id,bigint(20) unsigned,,20,0,N, ,业务部门
+creator_id,bigint(20) unsigned,,20,0,N, ,创建者
+status,tinyint(4),,3,0,N, ,状态（0:关闭，1：启动，2:未启动）
+modifier,bigint(20) unsigned,,20,0,N, ,修改人
+type,tinyint(4),,3,0,Y, ,排期类型
+pic_url,varchar(2048),2048,,,Y, ,图片链接
+group_id,bigint(20) unsigned,,20,0,N, ,业务所属事业群
+pic_size,int(10) unsigned,,10,0,Y, ,图片大小
+pc_page_id,varchar(200),200,,,Y, ,PC页面id
+app_page_id,varchar(200),200,,,Y, ,无线页面id
+,,,,,,,
+,,,,,,,
+表名称：channel_floor_item,表名称：automatic_selection,描述:频道商品扩展信息,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键，频道编号
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+floor_id,bigint(20) unsigned,,20,0,Y, ,楼层编号
+item_id,bigint(20) unsigned,,20,0,Y, ,商品编号
+citem_name,varchar(255),255,,,Y, ,投放商品名称
+citem_price,double(22),,22,,Y, ,投放商品价格
+exts,varchar(2048),2048,,,Y, ,扩展字段
+item_declaration1,varchar(255),255,,,Y, ,商品宣言1
+item_declaration2,varchar(255),255,,,Y, ,商品宣言2
+item_declaration3,varchar(255),255,,,Y, ,商品宣言3
+item_url,varchar(2048),2048,,,Y, ,商品链接
+publish_time,date,,,,Y, ,商品上架时间
+privilege_explain,varchar(2048),2048,,,Y, ,商品优惠说明
+description,varchar(255),255,,,Y, ,商品描述
+time_interval,varchar(255),255,,,Y, ,几天几夜
+round_id,bigint(20) unsigned,,20,0,Y, ,场次编号
+plan_id,bigint(20) unsigned,,20,0,Y, ,投放排期
+excute_time,datetime,,,,Y, ,定时任务执行时间
+excute_status,tinyint(4),,3,0,Y, ,系统商品上架状态：1： 上架成功，0 ：未上架
+excute_count,int(11),,10,0,Y, ,系统商品上架执行次数
+excute_result,varchar(2048),2048,,,Y, ,系统执行结果
+seq,int(11),,10,0,Y, ,排序
+seller_id,bigint(20) unsigned,,20,0,Y, ,卖家ID
+update_price_status,tinyint(4),,3,0,Y, ,系统改价商品状态：1：改价成功，0 ：未改价
+update_price_count,int(11),,10,0,Y, ,系统改价执行次数
+image_url,varchar(2048),2048,,,Y, ,图片链接
+app_id,varchar(512),512,,,Y, ,APP ID，来源招商
+status,tinyint(4),,3,0,Y, ,商品是否已经投放结束：1：未结束，0：已结束
+activity_ids,varchar(128),128,,,Y, ,活动id
+update_price_time,datetime,,,,Y, ,系统改价时间
+,,,,,,,
+,,,,,,,
+表名称：channel_plan,表名称：automatic_selection,描述:频道投放排期,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键，排期编号
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+pcdid,bigint(20) unsigned,,20,0,N, ,主频道编号
+cid,bigint(20) unsigned,,20,0,N, ,频道编号
+floor_id,bigint(20) unsigned,,20,0,N, ,楼层编号
+round_id,bigint(20) unsigned,,20,0,Y, ,场次编号
+start_time,date,,,,Y, ,开始时间
+end_time,date,,,,Y, ,结束时间
+status,tinyint(4),,3,0,N, ,状态（0:关闭，1：启动，2:未启动）
+deliver_pattern_id,bigint(20) unsigned,,20,0,Y, ,投放方式；deliver_pattern表ID
+template_id,bigint(20) unsigned,,20,0,Y, ,投放字段模板编号；【弃用；放入floor】
+,,,,,,,
+,,,,,,,
+表名称：channel_property_template,表名称：automatic_selection,描述:频道投放商品属性模板,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键，模板编号
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+sense_id,bigint(20) unsigned,,20,0,Y, ,场景编号
+property,varchar(255),255,,,Y, ,属性
+status,tinyint(4),,3,0,N, ,状态（0:关闭，1：启动，2:未启动）
+type,tinyint(4),,3,0,N, ,类型（1: 楼层）
+property_name,varchar(500),500,,,Y, ,属性名称
+property_key,varchar(255),255,,,Y, ,属性键值
+,,,,,,,
+,,,,,,,
+表名称：channel_tms_record,表名称：automatic_selection,描述:TMS记录表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+sub_channel_id,bigint(20) unsigned,,20,0,N, ,子频道id
+title,varchar(200),200,,,N, ,页面标题
+type,tinyint(4),,3,0,N, ,类型1、模板2、自定义
+terminal_type,tinyint(4),,3,0,N, ,终端类型1、PC；2、无线3、都有
+pc_url,varchar(200),200,,,Y, ,PC路径
+offline_date,datetime,,,,Y, ,下线时间
+pc_template_id,varchar(20),20,,,Y, ,PC模板id
+floor_module,varchar(1000),1000,,,Y, ,楼层id与模块名称对应关系
+exts,varchar(1000),1000,,,Y, ,扩展属性
+status,tinyint(4),,3,0,Y, ,状态： 0:作废，1:启用
+creator_id,bigint(20) unsigned,,20,0,Y, ,创建者
+app_template_id,bigint(20) unsigned,,20,0,Y, ,无线模板ID
+app_url,varchar(200),200,,,Y, ,无线url
+pc_page_id,varchar(20),20,,,Y, ,PC页面ID
+app_page_id,varchar(20),20,,,Y, ,APP页面ID
+,,,,,,,
+,,,,,,,
+表名称：city,表名称：automatic_selection,描述:航旅统一城市表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_modified,datetime,,,,N, ,更新时间
+gmt_create,datetime,,,,N, ,创建时间
+city_code,varchar(256),256,,,N, ,城市代码
+city_name_cn,varchar(256),256,,,Y, ,城市中文名称
+city_name_en,varchar(256),256,,,Y, ,城市英文名称
+province_code,varchar(256),256,,,Y, ,所属省代码
+province_name_en,varchar(256),256,,,Y, ,所属省英文
+province_name_cn,varchar(256),256,,,Y, ,所属省中文
+country_code,varchar(256),256,,,Y, ,所属国家代码
+country_name_en,varchar(256),256,,,Y, ,所属国家英文名称
+country_name_cn,varchar(256),256,,,Y, ,所属国家中文名称
+status,tinyint(4),,3,0,N,0 ,信息是否完整
+,,,,,,,
+,,,,,,,
+表名称：country,表名称：automatic_selection,描述:航旅统一国家表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20),,19,0,N, auto_increment,主键
+gmt_modified,datetime,,,,N, ,更新时间
+gmt_create,datetime,,,,N, ,创建时间
+country_code,varchar(256),256,,,N, ,国家代码
+country_name_cn,varchar(256),256,,,Y, ,国家中文名称
+country_name_en,varchar(256),256,,,Y, ,国家英文名称
+continent_code,varchar(256),256,,,Y, ,所属洲代码
+continent_name_en,varchar(256),256,,,Y, ,所属洲英文名称
+continent_name_cn,varchar(256),256,,,Y, ,所属洲中文名称
+capital_code,varchar(256),256,,,Y, ,首都代码
+capital_name_en,varchar(256),256,,,Y, ,首都英文名称
+capital_name_cn,varchar(256),256,,,Y, ,首都中文名称
+status,tinyint(4),,3,0,N,0 ,信息是否完整
+,,,,,,,
+,,,,,,,
+表名称：deliver_pattern,表名称：automatic_selection,描述:投放方式,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+biz_id,bigint(20) unsigned,,20,0,Y, ,关联到场次、排期等某一条相关记录的业务ID 【暂时不用】
+type,tinyint(4),,3,0,Y, ,"投放方式；1:顺序投放,2:轮播投放,3:随机投放"
+deliver_condition,varchar(2048),2048,,,Y, ,投放条件、规则【弃用】
+duration,tinyint(4),,3,0,Y, ,投放时长；1：半小时，2：1小时，3：2小时
+target,tinyint(4),,3,0,Y, ,投放对象；1：投放篮中内容，2：所有可选商品
+inventory_validation,tinyint(4),,3,0,Y, ,库存校验；1：下架并替换，2：不下架并打标
+invalid_validation,tinyint(4),,3,0,Y, ,失效校验；1：下架并替换
+price_validation,tinyint(4),,3,0,Y, ,价格变化校验；1：高于投放价格1%<=变化值<=100%，2：等于一口价
+biz_type,tinyint(4),,3,0,Y, ,业务类型；1：楼层的投放方式，biz_id为楼层ID；2：场次的投放方式，biz_id为场次ID 【暂时不用】
+deliver_count,int(11),,10,0,Y, ,投放数量
+order_condition,tinyint(4),,3,0,Y, ,投放顺序条件；1：宝贝综合评分
+group_condition,tinyint(4),,3,0,Y, ,投放分组条件；0：总共，1：每个出发地，2：每个目的地
+floor_id,bigint(20) unsigned,,20,0,Y, ,楼层ID
+,,,,,,,
+,,,,,,,
+表名称：district,表名称：automatic_selection,描述:航旅统一地区表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20),,19,0,N, auto_increment,主键
+gmt_modified,datetime,,,,N, ,更新时间
+gmt_create,datetime,,,,N, ,创建时间
+district_name_cn,varchar(256),256,,,Y, ,地区中文名称
+district_name_en,varchar(256),256,,,Y, ,地区英文名称
+city_code,varchar(256),256,,,Y, ,所属市代码
+city_name_en,varchar(256),256,,,Y, ,所属市英文名称
+city_name_cn,varchar(256),256,,,Y, ,所属市中文名称
+status,tinyint(4),,3,0,N,0 ,信息是否完整
+,,,,,,,
+,,,,,,,
+表名称：floor,表名称：automatic_selection,描述:楼层信息,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,"主键,楼层编号"
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+cid,bigint(20) unsigned,,20,0,N, ,频道编号
+floor_name,varchar(255),255,,,N, ,楼层名称
+status,tinyint(4),,3,0,N, ,状态（0:关闭，1：启动，2:未启动）
+content_type,varchar(255),255,,,N, ,内容类型
+auto_flag,tinyint(4),,3,0,N, ,是否允许商品库自动分配
+round_flag,tinyint(4),,3,0,N, ,是否分场次
+change_price_flag,tinyint(4),,3,0,N, ,是否允许改价
+before_change_price_hour,int(11),,10,0,Y, ,改价提前小时数
+creator_id,bigint(20) unsigned,,20,0,N, ,创建者
+modifier,bigint(20) unsigned,,20,0,N, ,最后修改人
+template_id,bigint(20) unsigned,,20,0,Y, ,投放字段模板编号
+content_id,bigint(20),,19,0,Y, ,内容来源id
+start_time,datetime,,,,Y, ,活动开始时间
+end_time,datetime,,,,Y, ,活动结束时间
+,,,,,,,
+,,,,,,,
+表名称：frame,表名称：automatic_selection,描述:帧,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,最后修改时间
+name,varchar(100),100,,,N, ,名称
+res_pos_id,bigint(20) unsigned,,20,0,N, ,所属资源位
+description,varchar(1024),1024,,,Y, ,说明
+status,tinyint(4),,3,0,N, ,状态： 0:作废，1:启用
+seq,int(10) unsigned,,10,0,N, ,帧顺序
+,,,,,,,
+,,,,,,,
+表名称：keyword,表名称：automatic_selection,描述:关键字,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+name,varchar(500),500,,,N, ,关键字名称
+status,bigint(20) unsigned,,20,0,N, ,"状态,1表示启用,0未启用"
+,,,,,,,
+,,,,,,,
+表名称：location,表名称：automatic_selection,描述:位置,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+name,varchar(100),100,,,N, ,名称
+channel,tinyint(4),,3,0,N, ,渠道 1：pc，2：app
+description,varchar(1024),1024,,,Y, ,说明
+status,tinyint(4),,3,0,N, ,状态 0:作废，1：启用
+,,,,,,,
+,,,,,,,
+表名称：materials,表名称：automatic_selection,描述:素材,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,最后修改时间
+name,varchar(60),60,,,N, ,名称
+contacts,varchar(60),60,,,N, ,业务方联系人
+contacts_id,varchar(512),512,,,N, ,业务方联系人id
+features,varchar(1024),1024,,,Y, ,投放人群
+ud_tag,varchar(1024),1024,,,Y, ,自定义标签
+activity,varchar(100),100,,,N, ,推广活动
+link,varchar(1024),1024,,,Y, ,链接
+pic_url,varchar(200),200,,,Y, ,图片
+words,varchar(200),200,,,Y, ,文案
+description,varchar(1024),1024,,,Y, ,说明
+status,tinyint(4),,3,0,N, ,"状态
+0、新建
+1、待提交素材
+2、审核中
+3、审核通过
+4、素材退回
+5、下线"
+exts,varchar(1024),1024,,,Y, ,扩展配置
+last_updated,varchar(200),200,,,N, ,最后修改人
+priority,tinyint(4),,3,0,N, ,优先级
+create_id,bigint(20) unsigned,,20,0,Y, ,排期人员id
+,,,,,,,
+,,,,,,,
+表名称：permission,表名称：automatic_selection,描述:权限表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+biz_id,bigint(20) unsigned,,20,0,N, ,业务ID
+type,tinyint(4),,3,0,N, ,业务类型(1投放业务，2主题，3 资源位管理)
+user_id,bigint(20) unsigned,,20,0,N, ,用户ID
+user_name,varchar(40),40,,,N, ,用户名称
+status,tinyint(4),,3,0,N, ,状态：0:无效，1:有效
+,,,,,,,
+,,,,,,,
+表名称：poi,表名称：automatic_selection,描述:航旅统一POI库,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+poi_id,varchar(128),128,,,N, ,"平台poi统一id,外部用此字段做关联"
+parent_poi_id,varchar(128),128,,,Y, ,父级poi id
+platform_poi_id,varchar(128),128,,,Y, ,各类目poi id
+poi_name,varchar(512),512,,,N, ,poi名称
+poi_name_en,varchar(512),512,,,Y, ,poi名称英文或拼音
+poi_type,varchar(64),64,,,N, ,"poi类型,CITY:城市,HOTEL:酒店,SCENIC:景点,RESTRAUNT:餐厅,ENTERTAINMENT:娱乐"
+city_code,varchar(64),64,,,Y, ,城市代码
+city_name,varchar(128),128,,,Y, ,城市名称
+score,int(11),,10,0,Y, ,分数
+rank,int(11),,10,0,Y, ,相同父poi下子poi的排名
+simple_desc,text,65535,,,Y, ,简介
+full_desc,text,65535,,,Y, ,详细介绍
+longitude,double(22),,22,,Y, ,经度
+latitude,double(22),,22,,Y, ,纬度
+address,varchar(1024),1024,,,Y, ,地址
+phone_number,varchar(28),28,,,Y, ,电话
+open_time,varchar(512),512,,,Y, ,open_time
+best_season,varchar(512),512,,,Y, ,"最佳季节,景点poi字段"
+suggest_travel_time,varchar(512),512,,,Y, ,"建议游玩时间,景点poi字段"
+ticket_info,varchar(1024),1024,,,Y, ,门票信息
+pics,varchar(1024),1024,,,Y, ,"poi图片,多个用','隔开"
+avg_fee,int(11),,10,0,Y, ,"人均消费,美食poi字段"
+tag_foods,varchar(1024),1024,,,Y, ,"招牌菜,多个用','隔开"
+tags,varchar(1024),1024,,,Y, ,"标签,多个用','隔开"
+,,,,,,,
+,,,,,,,
+表名称：poi_comment,表名称：automatic_selection,描述:poi评论表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+poi_id,varchar(128),128,,,N, ,"poi id,关联poi表的poi_id"
+score,int(11),,10,0,Y, ,用户评分
+comment_date,date,,,,N, ,评论时间
+comment,text,65535,,,N, ,用户评论详情
+user_nick,bigint(20) unsigned,,20,0,Y, ,用户昵称
+pics,varchar(1024),1024,,,Y, ,用户上传图片
+,,,,,,,
+,,,,,,,
+表名称：poi_grab,表名称：automatic_selection,描述:POI爬取中间表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20),,19,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+poi_id,varchar(128),128,,,N, ,"平台poi统一id,外部用此字段做关联"
+poi_hierarchy,varchar(256),256,,,Y, ,poi层级关系
+tags,varchar(1024),1024,,,Y, ,"标签,多个用'',''隔开"
+poi_name,varchar(512),512,,,N, ,poi名称
+poi_name_en,varchar(512),512,,,Y, ,poi名称英文或拼音
+score,int(11),,10,0,Y, ,分数
+rank,int(11),,10,0,Y, ,相同父poi下子poi的排名
+simple_desc,text,65535,,,Y, ,简介
+full_desc,text,65535,,,Y, ,详细介绍
+longitude,double(22),,22,,Y, ,经度
+latitude,double(22),,22,,Y, ,纬度
+address,varchar(1024),1024,,,Y, ,地址
+phone_number,varchar(28),28,,,Y, ,电话
+open_time,varchar(512),512,,,Y, ,open_time
+best_season,varchar(512),512,,,Y, ,"最佳季节,景点poi字段"
+suggest_tour_time,varchar(512),512,,,Y, ,"建议游玩时间,景点poi字段"
+ticket_info,varchar(1024),1024,,,Y, ,门票信息
+pics,varchar(1024),1024,,,Y, ,"poi图片,多个用'',''隔开"
+avg_fee,int(11),,10,0,Y, ,"人均消费,美食poi字段"
+tag_foods,varchar(1024),1024,,,Y, ,"招牌菜,多个用'',''隔开"
+url,varchar(1024),1024,,,Y, ,百度poi详情爬取url
+,,,,,,,
+,,,,,,,
+表名称：precut_activity_item,表名称：automatic_selection,描述:精选行程列表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+day_order,int(11),,10,0,N, ,第X天
+item_order,int(11),,10,0,N, ,某一天 下的 第X个条目
+item_pic_url,varchar(127),127,,,Y, ,商品 图片url地址
+item_platform_id,varchar(31),31,,,N, ,名称编号：商品itemId
+item_name,varchar(31),31,,,N, ,poi名称
+item_type,varchar(15),15,,,N, ,poi类型
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+item_desc,varchar(127),127,,,Y, ,活动描述
+property_type,int(11),,10,0,Y, ,扩展地段类型
+property_content,text,65535,,,Y, ,扩展地段类型
+activity_plan_id,varchar(31),31,,,N, ,精选活动标识
+,,,,,,,
+,,,,,,,
+表名称：precut_activity_plan,表名称：automatic_selection,描述:精选活动,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+activity_pic_url,varchar(127),127,,,N, ,活动图片地址
+activity_topic,varchar(63),63,,,N, ,活动主题名称
+activity_desc,varchar(255),255,,,Y, ,活动描述
+city_name,varchar(15),15,,,Y, ,城市名称
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+activity_plan_id,varchar(31),31,,,N, ,精选活动 id
+activity_tags,varchar(255),255,,,Y, ,活动标签
+priority,smallint(6),,5,0,Y, ,优先级
+property_type,smallint(6),,5,0,Y, ,扩展字段类型
+property_content,text,65535,,,Y, ,扩展地段内容
+,,,,,,,
+,,,,,,,
+表名称：province,表名称：automatic_selection,描述:航旅统一省份表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20),,19,0,N, auto_increment,主键
+gmt_modified,datetime,,,,N, ,更新时间
+gmt_create,datetime,,,,N, ,创建时间
+province_code,varchar(256),256,,,N, ,省份代码
+province_name_cn,varchar(256),256,,,Y, ,省份中文名称
+province_name_en,varchar(256),256,,,Y, ,省份英文名称
+country_code,varchar(256),256,,,Y, ,所属国家代码
+country_name_en,varchar(256),256,,,Y, ,所属国家英文名称
+country_name_cn,varchar(256),256,,,Y, ,所属国家中文名称
+capital_code,varchar(256),256,,,Y, ,省会代码
+capital_name_en,varchar(256),256,,,Y, ,省会英文名称
+capital_name_cn,varchar(256),256,,,Y, ,省会中文名称
+status,tinyint(4),,3,0,N,0 ,信息是否完整
+,,,,,,,
+,,,,,,,
+表名称：rank_condition,表名称：automatic_selection,描述:投放排序条件,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+item_id,bigint(20) unsigned,,20,0,Y, ,商品ID
+type,tinyint(4),,3,0,Y, ,条件类型；1:人工排序，2:成交数量，3:点击pv，4:点击uv，5:宝贝综合评分
+,,,,,,,
+,,,,,,,
+表名称：res_pos_exts,表名称：automatic_selection,描述:资源位扩展,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+res_pos_id,bigint(20) unsigned,,20,0,N, ,资源位ID
+pre_exposure_uv,bigint(20) unsigned,,20,0,Y, ,预计曝光UV
+pre_click_uv,bigint(20) unsigned,,20,0,Y, ,预计点击UV
+health_score,int(11),,10,0,Y, ,健康值
+,,,,,,,
+,,,,,,,
+表名称：res_position,表名称：automatic_selection,描述:资源位,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,最后修改时间
+name,varchar(60),60,,,N, ,名称
+location_id,bigint(20) unsigned,,20,0,N, ,所在位置
+type,tinyint(4),,3,0,N, ,类型  1.banner位   2.文字链
+description,varchar(1024),1024,,,Y, ,说明
+length,int(11),,10,0,Y, ,长度(px)，当类型为banner位时不为空
+width,int(11),,10,0,Y, ,宽度(px)，当类型为banner位时不为空
+pic_size,int(11),,10,0,Y, ,最大图片大小(k)
+word_counts,int(11),,10,0,Y, ,字数，当类型为文字链时不为空
+is_limited,tinyint(4),,3,0,N, ,推广时间是否控制
+limit_days,int(11),,10,0,Y, ,最长推广时间(天)
+tms_id,bigint(20) unsigned,,20,0,Y, ,tms页面id
+other_requires,varchar(1024),1024,,,Y, ,其他特殊要求
+status,tinyint(4),,3,0,N, ,"状态： 0:作废，1:启用,2暂停"
+exts,varchar(1024),1024,,,Y, ,扩展配置
+creator_id,bigint(20) unsigned,,20,0,N, ,创建者
+creator_nick,varchar(100),100,,,N, ,创建者花名
+ued_auditor,varchar(100),100,,,Y, ,UED审核者
+put_counts,bigint(20) unsigned,,20,0,Y, ,投放量
+,,,,,,,
+,,,,,,,
+表名称：res_pos_plan,表名称：automatic_selection,描述:资源位素材投放,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,最后修改时间
+frame_id,bigint(20) unsigned,,20,0,N, ,所属帧
+materials_id,bigint(20) unsigned,,20,0,N, ,素材
+start_date,datetime,,,,N, ,投放开始时间
+end_date,datetime,,,,N, ,投放结束时间
+put_type,tinyint(3) unsigned,,3,0,N, ,投放方式(1、定投2、通投)
+click_val,bigint(20) unsigned,,20,0,Y, ,点击价值
+,,,,,,,
+,,,,,,,
+表名称：round,表名称：automatic_selection,描述:场次信息,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键，场次编号
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+cid,bigint(20) unsigned,,20,0,N, ,频道编号
+floor_id,bigint(20) unsigned,,20,0,N, ,楼层编号
+name,varchar(255),255,,,N, ,场次名称
+status,tinyint(4),,3,0,N, ,状态（0:关闭，1：启动，2:未启动）
+start_time,time,,,,Y, ,开始时间
+round_time,int(11),,10,0,N, ,场次时间（小时）
+cycle_type,tinyint(4),,3,0,N, ,周期类型(1：每天，2：指定日期)
+cycle_time,date,,,,Y, ,制定日期
+,,,,,,,
+,,,,,,,
+表名称：selection_category_field_form,表名称：automatic_selection,描述:智能选品条件,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+selection_type,int(11),,10,0,Y, ,选品类型
+field_type,int(11),,10,0,Y, ,字段类型
+selection_id,bigint(20) unsigned,,20,0,Y, ,选品ID
+,,,,,,,
+,,,,,,,
+表名称：selection_condition_category,表名称：automatic_selection,描述:选品条件分类,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+type,bigint(20) unsigned,,20,0,Y, ,字段标识
+field,bigint(20) unsigned,,20,0,Y, ,字段参数
+name,bigint(20) unsigned,,20,0,Y, ,字段名称
+,,,,,,,
+,,,,,,,
+表名称：selection_condition_field,表名称：automatic_selection,描述:选品条件字段,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+type,int(11),,10,0,Y, ,字段标识
+field,varchar(255),255,,,Y, ,字段参数
+name,varchar(255),255,,,Y, ,字段名称
+,,,,,,,
+,,,,,,,
+表名称：selection_condition_form,表名称：automatic_selection,描述:智能选品条件设置,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+type,tinyint(4),,3,0,Y, ,选品条件类型；1：度假商品，2：酒店商品，3：门票商品，4：机票商品，5：客栈商品，6：游轮商品
+departure,varchar(512),512,,,Y, ,出发地
+destination,varchar(512),512,,,Y, ,到达地
+item_type,tinyint(4),,3,0,Y, ,"商品类型；1:国内自由行, 2:国内跟团游, 3:国际自由行, 4:国际跟团游, 5:周边游, 6:度假周边商品"
+price_max,"decimal(10,0)",,10,0,Y, ,最高价格
+effictive_date_start,datetime,,,,Y, ,有效开始日期
+effective_date_end,datetime,,,,Y, ,有效结束日期
+journey_amount_min,int(11),,10,0,Y, ,最小行程天数
+journey_amount_max,int(11),,10,0,Y, ,最大行程天数
+inventory_min,int(11),,10,0,Y, ,最小库存
+inventory_max,int(11),,10,0,Y, ,最大库存
+sales_volume_min,int(11),,10,0,Y, ,最少销量
+sales_volume_max,int(11),,10,0,Y, ,最大销量
+as_id,bigint(20) unsigned,,20,0,N, ,智能选品ID
+,,,,,,,
+,,,,,,,
+表名称：s_hotel_ext,表名称：automatic_selection,描述:酒店信息（酒店Price(原价+活动价)， 酒店评分， Rank，销量）扩展,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,Y, ,创建时间
+gmt_modified,datetime,,,,Y, ,修改时间
+originalprice,int(11),,10,0,Y,0 ,原价
+price,int(11),,10,0,Y,0 ,活动价
+ratescore,"decimal(10,3)",,10,3,Y,0.000 ,评价评分
+rank,"decimal(10,3)",,10,3,Y,0.000 ,rank分值
+totalsalescount,int(11),,10,0,Y,0 ,销量
+shid,bigint(20) unsigned,,20,0,N, ,酒店ID
+ext01,varchar(10),10,,,Y, ,扩展01
+ext02,varchar(10),10,,,Y, ,扩展02
+,,,,,,,
+,,,,,,,
+表名称：s_n_shotel,表名称：automatic_selection,描述:阿里旅行新标准酒店表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+shid,varchar(100),100,,,N, ,主键
+gmt_create,varchar(50),50,,,Y, ,创建时间
+gmt_modified,varchar(50),50,,,Y, ,修改时间
+name,varchar(50),50,,,Y, ,酒店名称
+used_name,varchar(50),50,,,Y, ,曾用名
+type,varchar(50),50,,,Y, ,酒店类型
+domestic,varchar(5),5,,,Y, ,国家类型. 国内=0//国外=1
+country,varchar(10),10,,,Y, ,国家.对于国内酒店固定为China
+province,varchar(10),10,,,Y, ,省份
+city,varchar(10),10,,,Y, ,城市
+district,varchar(10),10,,,Y, ,区
+business,varchar(100),100,,,Y, ,商圈
+address,varchar(200),200,,,Y, ,地址
+longitude,varchar(200),200,,,Y, ,经度
+position_type,varchar(100),100,,,Y, ,经纬度类型默认为0-高德
+latitude,varchar(100),100,,,Y, ,维度
+tel,varchar(100),100,,,Y, ,"酒店电话。多个电话“，”分隔。 固话： 国家编码#区号#电话#分机, 手机号：##手机号, 400电话：##400823823"
+fax,varchar(100),100,,,Y, ,传真
+star,varchar(100),100,,,Y, ,酒店档次：（原来定义为星级，旅游局评定星级见star_rate）
+opening_time,varchar(50),50,,,Y, ,开业时间
+decorate_time,varchar(50),50,,,Y, ,装修时间
+floors,varchar(50),50,,,Y, ,楼层
+rooms,varchar(10),10,,,Y, ,房间数
+description,varchar(500),500,,,Y, ,酒店描述
+hotel_facilities,varchar(500),500,,,Y, ,"酒店设施。json格式{设施英文名:true|false,} 各种设施枚举以及中英文对应关系，有待补充"
+service,varchar(500),500,,,Y, ,服务
+room_facilities,varchar(500),500,,,Y, ,房间设施
+pics,varchar(200),200,,,Y, ,图片
+brand,varchar(100),100,,,Y, ,品牌
+status,varchar(10),10,,,Y, ,"状态. 0,营业中；-1，筹建中；-2，暂停营业；-3，已停业；-4，失效，-5 ，需电话咨询；默认为0,"
+extend,varchar(500),500,,,Y, ,扩展信息
+source,varchar(10),10,,,Y, ,"来源。0-小二直接添加；1-卖家提交,2- 系统初始导入。4-ota直接导入"
+auditor,varchar(10),10,,,Y, ,数据来源方，小二、Q等
+last_modify,varchar(10),10,,,Y, ,最后变更人
+postal_code,varchar(10),10,,,Y, ,邮编
+version,varchar(100),100,,,Y, ,版本号
+city_tag,varchar(500),500,,,Y, ,地区tag，多个tag 逗号分隔
+kezhan_tag,varchar(500),500,,,Y, ,客栈预留
+original_pics,varchar(200),200,,,Y, ,未打水印的原图
+transfer_pics,varchar(200),200,,,Y, ,从老版hotel和shotel-info中转移过来的图片，未打水印
+top_type,varchar(10),10,,,Y, ,酒店一级类型。0-酒店；1-客栈
+outer_id,varchar(200),200,,,Y, ,数据来源方的酒店id，如qunar
+q_hotel_id,bigint(20),,19,0,Y, ,对应的Q库的主键id
+store_id,varchar(100),100,,,Y, ,O2O系统门点（酒店）id
+clean_status,varchar(10),10,,,Y, ,O2O地理位置信息清洗状态（0或空为未清洗，1为已清洗）
+name_e,varchar(50),50,,,Y, ,英文名称
+hotel_policies,varchar(50),50,,,Y, ,酒店政策（如儿童及加床等，一般针对国际酒店）
+useful_info,varchar(500),500,,,Y, ,酒店实用信息（json格式）
+pics_ext,varchar(200),200,,,Y, ,图片扩展字段，json保存，图片类型及来源
+rating_average,varchar(20),20,,,Y, ,评分（评分系统读取不到取这个数据使用）
+ref_price,bigint(20),,19,0,Y, ,参考价（以分为单位，搜索系统如果没有报价取这个数据使用）
+c_pics,varchar(200),200,,,Y, ,携程图片专门给无线使用.
+star_rate,varchar(10),10,,,Y, ,旅游局评定星级
+map_urls,varchar(500),500,,,Y, ,"根据经纬度生成地图地址列表,逗号分隔."
+,,,,,,,
+,,,,,,,
+表名称：tag,表名称：automatic_selection,描述:主题标签表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+tag_id,bigint(20) unsigned,,20,0,N, ,标签id
+p_tag_id,bigint(20) unsigned,,20,0,N, ,父标签id
+tag_name,varchar(500),500,,,N, ,标签名称
+tag_source,bigint(20) unsigned,,20,0,N, ,标签来源0：算法 1：招商 2：属性 3：人工
+type,varchar(100),100,,,N, ,归类 人群类 位置类  时节泪  游玩方式类 风格类 景观类
+use_type,varchar(100),100,,,N, ,"使用范围 0：全类目通用
+1： 仅度假类目
+ 2：仅酒店类目
+ 3：仅门票类目
+4：景点
+5：酒店"
+index_type,varchar(100),100,,,N, ,索引对象 0：商品 1：SPU
+match_user_count,bigint(20) unsigned,,20,0,Y, ,匹配用户数
+index_count,bigint(20) unsigned,,20,0,Y, ,索引数
+used_count,bigint(20) unsigned,,20,0,Y, ,使用数量
+buy_per,bigint(20) unsigned,,20,0,Y, ,购买转化率
+favornum,bigint(20) unsigned,,20,0,Y, ,喜好度
+status,bigint(20) unsigned,,20,0,N, ,状态 0：未启用  1：已启用
+creator,varchar(100),100,,,N, ,创建者
+,,,,,,,
+,,,,,,,
+表名称：tag_kw_relation,表名称：automatic_selection,描述:标签关键字关系表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+tag_id,bigint(20) unsigned,,20,0,N, ,标签id
+kw_id,bigint(20) unsigned,,20,0,N, ,关键字id
+,,,,,,,
+,,,,,,,
+表名称：topic,表名称：automatic_selection,描述:主题表,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主题id
+name,varchar(1024),1024,,,Y, ,主题名称
+description,varchar(4096),4096,,,Y, ,主题描述
+pic_url,varchar(1024),1024,,,Y, ,主题图片对应的url
+data_type,smallint(5) unsigned,,5,0,Y, ,投放数据方式（ 1:人工选品 2:个性化推荐）
+plan_type,smallint(5) unsigned,,5,0,Y, ,"投放计划方式（ 0：没投放方式设定, 1:日期投放）"
+tags_id,varchar(1024),1024,,,Y, ,标签项（多项用分号分隔）
+features,int(10) unsigned,,10,0,Y, ,按位存 0: 为默认(1) 1: 不可取消(2) 2:gps定位 (4) 3:当天数据(8) 4:置顶 (16) 5: new标签(32) 6:hot标签(64)
+source,smallint(5) unsigned,,5,0,Y, ,抓取数据方式（ 0:按标签聚合 1:通过活动招商平台api获取数据）
+channel_id,smallint(5) unsigned,,5,0,Y, ,主题对应渠道id　（ 1：无线  2: PC  3：无线+PC）
+biz_type_id,smallint(5) unsigned,,5,0,Y, ,业务类型id ( 1: 发现 2:度假 3:景点)
+classify_id,smallint(5) unsigned,,5,0,Y, ,主题对应业务分类id (1:热门推荐 2：精彩活动 3:超值精选 4:热门玩法 5: 热门旅行地)
+status,smallint(5) unsigned,,5,0,Y, ,状态 （ 0:初始 1:启用 2：暂停）
+create_user_id,bigint(20) unsigned,,20,0,Y, ,创建表用户id
+last_modified_user_id,bigint(20) unsigned,,20,0,Y, ,更新表用户名
+create_user_name,varchar(100),100,,,Y, ,创建表用户名
+last_update_user_name,varchar(100),100,,,Y, ,更新表用户名
+gmt_create,datetime,,,,Y, ,主题创建时间
+gmt_modified,datetime,,,,Y, ,主题修改时间
+business_id,bigint(20) unsigned,,20,0,Y, ,所属投放业务id
+is_info,tinyint(3) unsigned,,3,0,Y,1 ,记录来源（0: 从外部添加  1:从info表中添加）
+start_time,datetime,,,,Y, ,主题开始时间
+end_time,datetime,,,,Y, ,主题结束时间
+,,,,,,,
+,,,,,,,
+表名称：travel_plan,表名称：automatic_selection,描述:行程规划名称,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+name,varchar(256),256,,,N, ,名称
+city_name,varchar(256),256,,,Y, ,"城市名称,多个用"",""分开"
+city_code,varchar(256),256,,,Y, ,"城市代码,多个“,”分开"
+travel_day_num,int(11),,10,0,N, ,规划天数
+visit_num,int(11),,10,0,Y, ,浏览次数
+use_num,int(11),,10,0,Y, ,使用次数
+related_poi_name,varchar(512),512,,,Y, ,"关联的poi名称,多个用"",""隔开"
+min_fee,int(11),,10,0,Y, ,价格下限
+priority,int(11),,10,0,N, ,"优先级，0-10,10最高"
+tags,varchar(256),256,,,Y, ,"标签,多个用"",""隔开"
+max_fee,int(11),,10,0,Y, ,价格下限
+url,varchar(1024),1024,,,N, ,源url
+,,,,,,,
+,,,,,,,
+表名称：travel_plan_day,表名称：automatic_selection,描述:行程规划每天信息,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+travel_plan_id,bigint(20) unsigned,,20,0,N, ,关联travel_plan主键
+day_order,int(11),,10,0,N, ,第几天
+travel_location,varchar(256),256,,,Y, ,行程地点
+travel_overview,varchar(512),512,,,Y, ,行程概览
+travel_desc,text,65535,,,Y, ,行程描述
+,,,,,,,
+,,,,,,,
+表名称：travel_plan_poi,表名称：automatic_selection,描述:行程规划poi,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20),,19,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+poi_id,varchar(128),128,,,Y, ,"平台poi统一id,外部用此字段做关联"
+platform_poi_id,varchar(128),128,,,Y, ,各类目poi id
+poi_name,varchar(512),512,,,N, ,poi名称
+poi_type,varchar(64),64,,,Y, ,"poi类型,CITY:城市,HOTEL:酒店,SCENIC:景点,RESTRAUNT:餐厅,ENTERTAINMENT:娱乐"
+city_code,varchar(64),64,,,Y, ,城市代码
+city_name,varchar(128),128,,,Y, ,城市名称
+score,int(11),,10,0,Y, ,分数
+simple_desc,text,65535,,,Y, ,简介
+longitude,double(22),,22,,Y, ,经度
+latitude,double(22),,22,,Y, ,纬度
+address,varchar(1024),1024,,,Y, ,地址
+phone_number,varchar(28),28,,,Y, ,电话
+open_time,varchar(512),512,,,Y, ,open_time
+best_season,varchar(512),512,,,Y, ,"最佳季节,景点poi字段"
+suggest_travel_time,varchar(512),512,,,Y, ,"建议游玩时间,景点poi字段"
+pics,varchar(1024),1024,,,Y, ,"poi图片,多个用'',''隔开"
+tag_foods,varchar(1024),1024,,,Y, ,"招牌菜,多个用'',''隔开"
+tags,varchar(1024),1024,,,Y, ,"标签,多个用'',''隔开"
+travel_plan_day_id,bigint(20) unsigned,,20,0,N, ,关联travel_plan_day主键
+travel_order,int(11),,10,0,N, ,出行顺序
+,,,,,,,
+,,,,,,,
+表名称：user_tags,表名称：automatic_selection,描述:人群标签,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,字符集:utf8_general_ci,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+表名称：automatic_selection,表名称：automatic_selection,数据库:trip_walle@10.249.193.179:3405【mysql】,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection,表名称：automatic_selection
+列名,类型,长度,精度,标度,是否为空,缺省值,描述
+id,bigint(20) unsigned,,20,0,N, auto_increment,主键
+gmt_create,datetime,,,,N, ,创建时间
+gmt_modified,datetime,,,,N, ,修改时间
+tag_id,bigint(20) unsigned,,20,0,N, ,标签ID
+name,varchar(100),100,,,N, ,标签名称
+group_id,bigint(20) unsigned,,20,0,Y, ,标签分组ID
+group_name,varchar(100),100,,,Y, ,分组名称

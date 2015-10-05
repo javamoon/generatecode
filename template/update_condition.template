@@ -1,0 +1,5 @@
+ 	    <isNotNull property="$2$" prepend=",">
+                <![CDATA[
+	               $1$ = #$2$#
+	            ]]>
+            </isNotNull>

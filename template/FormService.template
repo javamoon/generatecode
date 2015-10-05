@@ -1,0 +1,26 @@
+package com.taobao.trip.walle.channel;
+
+import com.taobao.trip.walle.channel.domain.${Form}DO;
+import com.taobao.trip.walle.channel.query.${Form}Query;
+import com.taobao.trip.walle.util.ResultStatus;
+
+import java.util.List;
+
+public interface ${Form}Service {
+
+    public ResultStatus<Long> save(${Form}DO ${form}DO);
+
+    public ResultStatus<Integer> batchInsert(List<${Form}DO> ${form}DOs);
+
+    public ResultStatus<Boolean> update(${Form}DO ${form}DO);
+
+    public ResultStatus<${Form}DO> queryById(Long ${form}Id);
+
+    public ResultStatus<${Form}DO> query(${Form}Query ${form}Query);
+
+    public ResultStatus<List<${Form}DO>> queryList(${Form}Query ${form}Query);
+
+    public ResultStatus<Boolean> delete(Long id);
+
+    public ResultStatus<Integer> getCount(${Form}Query ${form}Query);
+}

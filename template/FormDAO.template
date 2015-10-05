@@ -1,0 +1,59 @@
+package com.taobao.trip.walle.channel.dao;
+
+import com.taobao.common.dao.persistence.exception.DAOException;
+import com.taobao.trip.walle.channel.domain.${Form}DO;
+import com.taobao.trip.walle.channel.query.${Form}Query;
+import com.taobao.trip.walle.commondb.BaseDAO;
+import com.taobao.util.TBStringUtil;
+
+import java.util.*;
+
+public class ${Form}DAO extends BaseDAO{
+    public Long insert(${Form}DO ${form}DO) throws DAOException{
+        return (Long)executeInsert("${form}DO.insert",${form}DO,dbRoute);
+    }
+
+    public Integer batchInsert(List<${Form}DO> ${form}DOs) throws DAOException {
+        if (null == ${form}DOs || ${form}DOs.size() == 0)
+            return 0;
+
+        Integer count = (Integer)executeUpdate("${form}DO.batchInsert", ${form}DOs, dbRoute);
+        return count;
+    }
+
+    public boolean update(${Form}DO ${form}DO) throws DAOException {
+        if (null == ${form}DO) {
+            return false;
+        }
+        Integer res = (Integer) executeUpdate("${form}DO.update",${form}DO,dbRoute);
+        if (TBStringUtil.getInt(res,0) > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public ${Form}DO query(${Form}Query ${form}Query) throws DAOException {
+        return (${Form}DO)executeQueryForObject("${form}DO.query",${form}Query,dbRoute);
+    }
+
+    public List<${Form}DO> queryList(${Form}Query ${form}Query) throws DAOException{
+        return executeQueryForList("${form}DO.queryList",${form}Query,dbRoute);
+    }
+
+    public boolean delete(Long id) throws DAOException{
+        Integer res = (Integer)executeUpdate("${form}DO.delete",id,dbRoute);
+        if (TBStringUtil.getInt(res,0)>0)
+            return true;
+        else
+            return false;
+    }
+
+    public Integer getCount(${Form}Query ${form}Query) throws DAOException {
+        if (null == ${form}Query) {
+            return 0;
+        }
+        Integer count = (Integer)executeQueryForObject("${form}DO.count",${form}Query,dbRoute);
+        return count;
+    }
+}

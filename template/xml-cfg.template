@@ -1,0 +1,3 @@
+;; web\src\main\webapp\WEB-INF\common\bean-channel.xml
+<bean id="${form}DAO" class="com.taobao.trip.walle.channel.dao.${Form}DAO"/>
+<bean id="${form}Service" class="com.taobao.trip.walle.channel.service.impl.${Form}ServiceImpl"/>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="${form}DO">
+    <typeAlias alias="${form}DO"
+               type="com.taobao.trip.walle.channel.domain.${Form}DO" />
+    <typeAlias alias="${form}Query"
+               type="com.taobao.trip.walle.channel.query.${Form}Query"/>
+    <resultMap id="${form}DOMap" class="${form}DO">
+   $[DOMap]
+    </resultMap>
+
+    <sql id="${form}DO_AllFields">
+        $[DO_AllFields]
+    </sql>
+
+    <sql id="${form}DO_doQueryParams" >
+        <dynamic prepend="WHERE" >
+$[DO_doQueryParams]
+        </dynamic>
+    </sql>
+
+    <insert id="insert" parameterClass="${form}DO" >
+        INSERT INTO ${table} (
+        <include refid="${form}DO_AllFields"/>
+        )
+        VALUES ( $[insert_values] )
+        <selectKey keyProperty="id" resultClass="java.lang.Long" >
+            SELECT LAST_INSERT_ID() AS value
+        </selectKey>
+    </insert>
+
+    <insert id ="batchInsert" parameterClass="java.util.List">
+        INSERT IGNORE INTO ${table} (
+        <include refid="${form}DO_AllFields"/>
+        )
+        VALUES
+        <iterate conjunction=",">
+            <![CDATA[
+		    ( $[batch_insert_values] )
+		    ]]>
+        </iterate>
+        <selectKey keyProperty="id" resultClass="java.lang.Long" >
+            SELECT LAST_INSERT_ID() AS value
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterClass="${form}DO" >
+        UPDATE ${table}
+        SET gmt_modified = now()
+        <dynamic>
+$[update_condition]
+        </dynamic>
+        WHERE id = #id#
+    </update>
+
+    <select id="count" parameterClass="${form}Query" resultClass="java.lang.Integer" >
+        SELECT COUNT(*) AS num FROM ${table}
+        <include refid="${form}DO_doQueryParams" />
+    </select>
+
+    <select id="query" parameterClass="${form}Query"  resultMap="${form}DOMap"  >
+        SELECT
+        <include refid="${form}DO_AllFields" />
+        FROM ${table}
+        <include refid="${form}DO_doQueryParams" />
+        order by id desc
+    </select>
+
+    <select id="queryList" parameterClass="${form}Query"  resultMap="${form}DOMap"  >
+        SELECT
+        <include refid="${form}DO_AllFields" />
+        FROM ${table}
+        <include refid="${form}DO_doQueryParams" />
+        order by id desc
+    </select>
+
+    <delete id="delete" parameterClass="java.lang.Long" >
+        DELETE FROM ${table} WHERE id = #id#
+    </delete>
+</sqlMap>

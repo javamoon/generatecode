@@ -1,0 +1,8 @@
+    public $[type] get$[Field]() {
+        return $[field];
+    }
+
+    public void set$[Field]($[type] $[field]) {
+        this.$[field] = $[field];
+    }
+

@@ -1,0 +1,134 @@
+package com.taobao.trip.walle.channel.service.impl;
+
+import com.taobao.common.dao.persistence.exception.DAOException;
+import com.taobao.trip.walle.channel.dao.${Form}DAO;
+import com.taobao.trip.walle.channel.domain.${Form}DO;
+import com.taobao.trip.walle.channel.query.${Form}Query;
+import com.taobao.trip.walle.channel.service.${Form}Service;
+import com.taobao.trip.walle.util.ResultStatus;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+public class ${Form}ServiceImpl implements ${Form}Service {
+    protected Log log = LogFactory.getLog(this.getClass());
+
+    @Resource
+    private ${Form}DAO ${form}DAO;
+
+    @Override
+    public ResultStatus<Long> save(${Form}DO ${form}DO) {
+        ResultStatus<Long> rs = new ResultStatus<>();
+        try {
+            rs.setResult(${form}DAO.insert(${form}DO));
+        } catch (DAOException e) {
+            log.error(e.getMessage(), e);
+            rs.setSuccess(false);
+            rs.status(ResultStatus.Status.SQLIERR);
+        }
+        return rs;
+    }
+
+    @Override
+    public ResultStatus<Integer> batchInsert(List<${Form}DO> ${form}DOs) {
+        ResultStatus<Integer> rs = new ResultStatus<>();
+        try {
+            rs.setResult(${form}DAO.batchInsert(${form}DOs));
+        } catch (DAOException e) {
+            log.error(e.getMessage(), e);
+            rs.setSuccess(false);
+            rs.status(ResultStatus.Status.SQLIERR);
+        }
+        return rs;
+    }
+
+    @Override
+    public ResultStatus<Boolean> update(${Form}DO ${form}DO) {
+        ResultStatus<Boolean> rs = new ResultStatus<>();
+        try {
+            rs.setResult(${form}DAO.update(${form}DO));
+        } catch (DAOException e) {
+            log.error(e.getMessage(), e);
+            rs.setSuccess(false);
+            rs.status(ResultStatus.Status.SQLUERR);
+        }
+        return rs;
+    }
+
+    @Override
+    public ResultStatus<${Form}DO> queryById(Long ${form}Id) {
+        ${Form}Query ${form}Query = new ${Form}Query();
+        if (null == ${form}Id) {
+            return new ResultStatus<${Form}DO>().ofError(ResultStatus.Status.PERR);
+        }
+        ${form}Query.setId(${form}Id);
+        return query(${form}Query);
+    }
+
+    @Override
+    public ResultStatus<${Form}DO> query(${Form}Query ${form}Query) {
+        ResultStatus<${Form}DO> rs = new ResultStatus<>();
+        try {
+            ${Form}DO ${form}DO = ${form}DAO.query(${form}Query);
+            if (null == ${form}DO) {
+		return rs.ofCondition(ResultStatus.Status.EMPTY);
+            }
+            rs.setResult(${form}DO);
+        } catch (DAOException e) {
+            log.error(e.getMessage(), e);
+            rs.setSuccess(false);
+            rs.status(ResultStatus.Status.SQLQERR);
+        }
+        return rs;
+    }
+
+    @Override
+    public ResultStatus<List<${Form}DO>> queryList(${Form}Query ${form}Query) {
+        ResultStatus<List<${Form}DO>> rs = new ResultStatus<>();
+        try {
+            List<${Form}DO> ${form}DOs = ${form}DAO.queryList(${form}Query);
+            if (null == ${form}DOs) {
+		return rs.ofCondition(ResultStatus.Status.EMPTY);
+            }
+            rs.setResult(${form}DOs);
+        } catch (DAOException e) {
+            log.error(e.getMessage(), e);
+            rs.setSuccess(false);
+            rs.status(ResultStatus.Status.SQLQERR);
+        }
+        return rs;
+    }
+
+    @Override
+    public ResultStatus<Boolean> delete(Long id) {
+        ResultStatus<Boolean> rs = new ResultStatus<>();
+        if (null == id) {
+            return rs.ofError(ResultStatus.Status.PERR);
+        }
+        try {
+            rs.setResult(${form}DAO.delete(id));
+        } catch (DAOException e) {
+            log.error(e.getMessage(), e);
+            rs.setSuccess(false);
+            rs.status(ResultStatus.Status.SQLDERR);
+        }
+        return rs;
+    }
+
+    @Override
+    public ResultStatus<Integer> getCount(${Form}Query ${form}Query) {
+        ResultStatus<Integer> rs = new ResultStatus<>();
+        try {
+            rs.setResult(${form}DAO.getCount(${form}Query));
+        } catch (DAOException e) {
+            log.error(e.getMessage(), e);
+            rs.setSuccess(false);
+            rs.status(ResultStatus.Status.SQLSERR);
+        }
+        return rs;
+    }
+
+}
+
